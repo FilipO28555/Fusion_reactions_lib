@@ -268,7 +268,7 @@ class Reaction:
             return None
         
         # Convert lab energy to CM energy
-        energy_cm_ev = self._lab_to_cm_energy_relativistic(torch.tensor([energy_lab_ev], dtype=torch.float64))
+        energy_cm_ev = self._lab_to_cm_energy_relativistic(torch.tensor([energy_lab_ev], dtype=torch.float64, device=self.energies.device))
         return self.interpolator([energy_cm_ev]).item()
     
     def _format_nuclide(self, code):
@@ -400,7 +400,7 @@ class Reaction:
         if self.interpolator is None:
             return None
         
-        energy_tensor = torch.tensor([energy_ev], dtype=torch.float64)
+        energy_tensor = torch.tensor([energy_ev], dtype=torch.float64, device=self.energies.device)
         return self.interpolator([energy_tensor]).item()
     
     def get_energy_and_cross_section(self):
@@ -960,17 +960,14 @@ class FusionReactionsLibrary:
         """Get all reactions in the library."""
         return self.reactions
     
-    def get_reaction(self):
-        """if only one reaction return it"""
-        if len(self.reactions) == 1:
-            return next(iter(self.reactions.values()))
-        else:
-            raise ValueError("Multiple reactions found, specify a reaction code")
-    
-    
     def get_reaction_codes(self):
         """Get all reaction codes in the library."""
         return list(self.reactions.keys())
+    
+    def list_reaction_codes(self):
+        """List all reaction codes in the library."""
+        for code in sorted(self.reactions.keys()):
+            print(code)
     
     def get_statistics(self):
         """Get library statistics."""

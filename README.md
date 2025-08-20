@@ -48,12 +48,23 @@ library.list_reactions(sort_by='q_value')
 # Filter reactions (e.g., deuterium-tritium fusion)
 dt_reactions = library.filter_reactions(reactants_exact=['d', 't'])
 
+# list available reaction codes
+dt_reactions.list_reaction_codes()
+# get all reaction codes
+reaction_codes = dt_reactions.get_reaction_codes()
 # Plot a specific reaction
-library.plot_reaction("1-H-2(T,N)2-HE-4,,SIG")
+reaction_code = reaction_codes[0]
+print(f"using reaction: {reaction_code}")
+dt_reactions.plot_reaction(reaction_code)
+# or like this
+dt_reactions.plot_reaction(dt_reactions.get_reaction_codes()[0])
+# or like this
+library.plot_reaction(dt_reactions.get_reaction_codes()[0])
 
 # Get cross-section at specific energy
-reaction = library.get_reaction("1-H-2(T,N)2-HE-4,,SIG")
-cross_section = reaction.get_cross_section_at_energy(1e6)  # 1 MeV in eV
+reaction = dt_reactions.get_reaction(reaction_code)
+cross_section = reaction.get_cross_section_at_energy(6e4)  # 60 keV
+print(f"Cross-section at 60 keV: {cross_section:.2e} barns")
 ```
 
 ## Key Classes
