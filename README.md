@@ -15,7 +15,7 @@ A comprehensive Python library for managing and analyzing nuclear fusion reactio
 ## Installation
 
 ### Requirements
-- Python 3.7+
+- [Interpolation Library](https://github.com/sbarratt/torch_interpolations)
 - PyTorch
 - NumPy
 - Matplotlib
