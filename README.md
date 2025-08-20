@@ -29,6 +29,8 @@ cd Fusion_reactions_lib
 ```
 
 ## Quick Start
+You can download your own EXFOR JSON data file, for example from here:
+[https://www-nds.iaea.org/exfor/](https://www-nds.iaea.org/exfor/)
 
 ```python
 from fusion_reactions_lib import FusionReactionsLibrary
