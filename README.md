@@ -181,7 +181,7 @@ This project is open source. Please check the license file for details.
 If you use this library in your research, please cite:
 ```
 Fusion Reactions Library
-FilipO28555
+Filip Optołowicz
 https://github.com/FilipO28555/Fusion_reactions_lib
 ```
 
