@@ -402,6 +402,14 @@ class Reaction:
         
         energy_tensor = torch.tensor([energy_ev], dtype=torch.float64, device=self.energies.device)
         return self.interpolator([energy_tensor]).item()
+
+    def get_cross_section_at_energies(self, energy_evs):
+        """Get cross-section values at specific energies."""
+        if self.interpolator is None:
+            return None
+
+        energy_tensor = torch.tensor(energy_evs, dtype=torch.float64, device=self.energies.device)
+        return self.interpolator([energy_tensor])
     
     def get_energy_and_cross_section(self):
         """Return energies and cross-sections as numpy arrays."""

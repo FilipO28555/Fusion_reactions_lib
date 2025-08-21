@@ -67,6 +67,9 @@ library.plot_reaction(dt_reactions.get_reaction_codes()[0])
 reaction = dt_reactions.get_reaction(reaction_code)
 cross_section = reaction.get_cross_section_at_energy(6e4)  # 60 keV
 print(f"Cross-section at 60 keV: {cross_section:.2e} barns")
+
+energies = torch.linspace(0, 1e6, 100)  # Energies from 0 to 1 MeV
+cross_sections = reaction.get_cross_section_at_energies(energies).cpu().numpy()
 ```
 
 ## Key Classes
