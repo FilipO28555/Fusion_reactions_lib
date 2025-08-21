@@ -10,7 +10,7 @@ A comprehensive Python library for managing and analyzing nuclear fusion reactio
 - **Advanced Filtering**: Filter reactions by reactants, products, Q-values, and cross-section magnitudes
 - **Visualization Tools**: Plot individual reactions or compare multiple reactions on the same figure
 - **GPU Support**: Leverages PyTorch for efficient computation with CUDA support
-- **Data Interpolation**: Smooth interpolation of cross-section data for any energy value
+- **Data Interpolation**: Linear interpolation of cross-section data for any energy value
 
 ## Installation
 
